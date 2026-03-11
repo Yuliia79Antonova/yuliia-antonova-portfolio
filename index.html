@@ -826,7 +826,7 @@
             <!-- Microbial Mayhem UI -->
 <div class="portfolio-item">
     <!-- Главная картинка -->
-    <div class="portfolio-image ui" style="display: flex; align-items: center; justify-content: center; background: #fdf2f8; cursor: zoom-in;" onclick="openImage('pic1.jpg')">
+    <div class="portfolio-image ui" style="display: flex; align-items: center; justify-content: center; background: #fdf2f8; cursor: zoom-in;" onclick="openImage('pic5.jpg')">
         <img src="pic5.jpg" alt="Microbial Mayhem main menu" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
     </div>
     
@@ -872,15 +872,15 @@
         
         <!-- 3 стадии эволюции -->
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 15px;">
-            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb1.jpg')">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb2.jpg')">
                 <img src="microb2.jpg" alt="Stage 1: Simple cell" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 1</p>
             </div>
-            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb2.jpg')">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb3.jpg')">
                 <img src="microb3.jpg" alt="Stage 2: Evolved form" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 2</p>
             </div>
-            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb3.jpg')">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb4.jpg')">
                 <img src="microb4.jpg" alt="Stage 3: Final form" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 3</p>
             </div>
@@ -917,6 +917,68 @@
         <p>© 2024 Yulia Antonova. Designed & Built with 💚</p>
     </footer>
 
+        </footer>
+
+    <!-- ВСТАВИТЬ СЮДА: начало lightbox -->
+    
+    <!-- Увеличение картинок при клике -->
+<div id="lightbox" onclick="closeImage()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; cursor: zoom-out;">
+    <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 10px; image-rendering: pixelated;">
+    
+    <div id="lightbox-caption" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; font-size: 1.1rem; font-weight: 600; text-align: center; background: rgba(0,0,0,0.8); padding: 12px 25px; border-radius: 30px;">
+    </div>
+</div>
+
+<script>
+function openImage(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    
+    img.src = src;
+    
+    if(src.includes('anim')) {
+        caption.textContent = '🎬 Animation Preview — Click anywhere to close';
+    } else if(src.includes('hero')) {
+        caption.textContent = '🎨 Character Art — Click anywhere to close';
+    } else {
+        caption.textContent = '🖼️ Click anywhere to close';
+    }
+    
+    // Для GIF — МАКСИМАЛЬНЫЙ размер
+    if(src.endsWith('.gif')) {
+        img.style.width = 'auto';
+        img.style.height = 'auto';
+        img.style.maxWidth = '98vw';
+        img.style.maxHeight = '95vh';
+        img.style.minWidth = '900px';      // Минимум 900px
+        img.style.minHeight = '600px';     // Минимум 600px
+    } else {
+        // Обычные картинки
+        img.style.width = 'auto';
+        img.style.height = 'auto';
+        img.style.maxWidth = '95%';
+        img.style.maxHeight = '95%';
+        img.style.minWidth = 'auto';
+        img.style.minHeight = 'auto';
+    }
+    
+    lightbox.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImage() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeImage();
+});
+</script>
+
+</body>
+</html>
     <script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
