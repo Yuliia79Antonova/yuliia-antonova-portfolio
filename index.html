@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuliia Antonova | Character Design & Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Nunito:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --turquoise: #2DD4BF;
+            --pink: #F472B6;
+            --lime: #84CC16;
+            --coral: #FB7185;
+            --navy: #1E293B;
+            --cream: #FEF7ED;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+        
+        /* Floating blobs background */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--turquoise);
+            top: -100px;
+            left: -100px;
+        }
+        
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--pink);
+            top: 50%;
+            right: -100px;
+            animation-delay: -5s;
+        }
+        
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--lime);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(254, 247, 237, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--turquoise);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--pink);
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            gap: 5%;
+        }
+        
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            background: var(--turquoise);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 .highlight {
+            color: var(--turquoise);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--pink);
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #64748B;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--turquoise);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 212, 191, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 3px solid var(--navy);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: white;
+        }
+        
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .monster-preview {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--turquoise) 0%, #5EEAD4 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 30px 60px rgba(45, 212, 191, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+            25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            75% { border-radius: 60% 40% 60% 40% / 70% 30% 50% 50%; }
+        }
+        
+        .eyes-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 200px;
+        }
+        
+        .eye {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+        
+        .eye::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--navy);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes blink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+        
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-tag {
+            color: var(--pink);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            margin-top: 0.5rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-tag {
+            background: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--navy);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--turquoise);
+            transform: translateY(-2px);
+        }
+        
+        .education-card {
+            background: linear-gradient(135deg, var(--turquoise) 0%, var(--pink) 100%);
+            padding: 2.5rem;
+            border-radius: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-card::before {
+            content: '🎓';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.2;
+        }
+        
+        .education-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .education-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 5%;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--navy);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--navy);
+            color: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .portfolio-image {
+            height: 300px;
+            background: linear-gradient(135deg, #ddd 0%, #eee 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-image.character {
+            background: linear-gradient(135deg, #2DD4BF 0%, #5EEAD4 100%);
+        }
+        
+        .portfolio-image.pixel {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+        }
+        
+        .portfolio-image.ui {
+            background: linear-gradient(135deg, #FB7185 0%, #F472B6 100%);
+        }
+        
+        .portfolio-image.animation {
+            background: linear-gradient(135deg, #84CC16 0%, #A3E635 100%);
+        }
+        
+        .portfolio-image.microbe {
+            background: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
+        }
+        
+        .placeholder-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        
+        .placeholder-content svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .portfolio-info {
+            padding: 2rem;
+        }
+        
+        .portfolio-category {
+            color: var(--pink);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .portfolio-info h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .portfolio-info p {
+            color: #64748B;
+            line-height: 1.6;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .portfolio-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--cream);
+            border-radius: 20px;
+            color: var(--navy);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(45,212,191,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .contact h2 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-text {
+            max-width: 600px;
+            margin: 2rem auto;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border: 2px solid var(--turquoise);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background: var(--turquoise);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: #0F172A;
+            color: #64748B;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .monster-preview { width: 300px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Pira<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">✨ Available for internships</span>
+            <h1>Hi, I'm <span class="highlight">Yuliia Antonova</span></h1>
+            <p class="hero-subtitle">
+                Character Designer & 2D Animator crafting quirky, expressive creatures 
+                for animation and games. Currently studying Interactive Digital Art at SETU.
+            </p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work ↓</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="monster-preview">
+                <div class="eyes-container">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-tag">About Me</span>
+            <h2>Passionate about bringing characters to life</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I'm a 3rd year student at South East Technological University (SETU), 
+                    specializing in Computing in Interactive Digital Art and Design. My passion 
+                    lies in creating memorable characters that tell stories and evoke emotions.
+                </p>
+                <p>
+                    From hand-drawn turnarounds to pixel art sprites and game UI design, I love 
+                    exploring different styles and techniques. I'm particularly drawn to the 
+                    playful, educational animation style that studios like Brown Bag Films excel at.
+                </p>
+                <div class="skills">
+                    <span class="skill-tag">Character Design</span>
+                    <span class="skill-tag">2D Animation</span>
+                    <span class="skill-tag">Adobe Animate</span>
+                    <span class="skill-tag">Photoshop</span>
+                    <span class="skill-tag">Pixel Art</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Rigging</span>
+                    <span class="skill-tag">Game Assets</span>
+                </div>
+            </div>
+            <div class="education-card">
+                <h3>Education</h3>
+                <p>
+                    <strong>BSc in Computing in Interactive Digital Art and Design</strong><br>
+                    South East Technological University (SETU)<br>
+                    3rd Year Student<br><br>
+                    Focusing on character animation, interactive media, and game design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <span class="section-tag">Selected Work</span>
+            <h2>Projects & Creations</h2>
+        </div>
+        
+       
+
+        <div class="portfolio-grid">
+            <!-- Character Design -->
+           <div class="portfolio-item">
+    <div class="portfolio-image character" style="display: flex; align-items: center; justify-content: center; background: #f0fdfa; cursor: zoom-in;" onclick="openImage('monster.jpg')">
+        <img src="monster.jpg" alt="Multi-eyed alien character turnaround showing front, back and side views" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    <div class="portfolio-info">
+        <span class="portfolio-category">Character Design</span>
+        <h3>Multi-Eyed Alien Creature</h3>
+        <p>Friendly alien character designed for children's animation, featuring expressive multi-eye rigging potential and soft, approachable shapes.</p>
+        
+        <!-- Миниатюры поз -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 15px;">
+            <div style="cursor: pointer;" onclick="openImage('monster-front.jpg')">
+                <img src="monster-front.jpg" alt="Front view" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Front</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('monster-back.jpg')">
+                <img src="monster-back.jpg" alt="Back view" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Back</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('monster-3quarter.jpg')">
+                <img src="monster-3quarter.jpg" alt="3/4 view" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Left Side</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('monster-side.jpg')">
+                <img src="monster-side.jpg" alt="Side view" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Right Side</p> 
+            </div>
+        </div>
+         
+    </div>
+</div>
+
+           <!-- Style Variations -->
+<div class="portfolio-item">
+    <div class="portfolio-image character" style="display: flex; align-items: center; justify-content: center; background: #f0fdfa; cursor: zoom-in;" onclick="openImage('monster-styles.jpg')">
+        <img src="monster-styles.jpg" alt="Character style variations" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    <div class="portfolio-info">
+        <span class="portfolio-category">Visual Development</span>
+        <h3>Style Variations Study</h3>
+        <p>Exploring one character across multiple techniques: clean vector, painterly textures, claymation aesthetic, and simplified cartoon styles.</p>
+        
+    </div>
+</div>
+
+           <!-- Pixel Art -->
+<div class="portfolio-item">
+    <!-- Главная картинка (заставка игры) -->
+    <div class="portfolio-image pixel" style="display: flex; align-items: center; justify-content: center; background: #1e293b; cursor: zoom-in;" onclick="openImage('screen.jpg')">
+        <img src="screen.jpg" alt="Game title screen with menu" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    
+    <div class="portfolio-info">
+        <span class="portfolio-category">Game Art</span>
+        <h3>Retro RPG Character Pack</h3>
+        <p>Complete set of 16-bit style character sprites including hero, ghost enemy, and tree creature, plus game menu UI elements.</p>
+        
+        <!-- Три персонажа -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; padding: 15px; background: #f8fafc; border-radius: 15px;">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('main hero.jpg')">
+                <img src="main hero.jpg" alt="Main hero character" style="width: 100%; border-radius: 8px; image-rendering: pixelated; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.75rem; color: #64748B; margin-top: 5px;">Hero</p>
+            </div>
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('enemy1.jpg')">
+                <img src="enemy1.jpg" alt="Ghost enemy" style="width: 100%; border-radius: 8px; image-rendering: pixelated; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.75rem; color: #64748B; margin-top: 5px;">Ghost</p>
+            </div>
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('enemy2.jpg')">
+                <img src="enemy2.jpg" alt="Tree enemy" style="width: 100%; border-radius: 8px; image-rendering: pixelated; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.75rem; color: #64748B; margin-top: 5px;">Tree</p>
+            </div>
+        </div>
+        
+        <!-- 4 GIFки -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
+            <div style="cursor: pointer; border-radius: 10px; overflow: hidden; background: #f1f5f9;" onclick="openImage('anim1.gif')">
+                <img src="anim1.gif" alt="Character animation 1" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+            </div>
+            <div style="cursor: pointer; border-radius: 10px; overflow: hidden; background: #f1f5f9;" onclick="openImage('anim2.gif')">
+                <img src="anim2.gif" alt="Character animation 2" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+            </div>
+            <div style="cursor: pointer; border-radius: 10px; overflow: hidden; background: #f1f5f9;" onclick="openImage('anim3.gif')">
+                <img src="anim3.gif" alt="Character animation 3" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+            </div>
+            <div style="cursor: pointer; border-radius: 10px; overflow: hidden; background: #f1f5f9;" onclick="openImage('anim4.gif')">
+                <img src="anim4.gif" alt="Character animation 4" style="width: 100%; height: 120px; object-fit: cover; display: block;">
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+           <!-- Animation -->
+<div class="portfolio-item">
+    <!-- Основная картинка (позы анимации) -->
+    <div class="portfolio-image animation" style="display: flex; align-items: center; justify-content: center; background: #ecfdf5; cursor: zoom-in;" onclick="openImage('hero.jpg')">
+        <img src="hero.jpg" alt="Character walk cycle key poses" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    
+    <div class="portfolio-info">
+        <span class="portfolio-category">Animation</span>
+        <h3>Character Walk Cycle</h3>
+        <p>Frame-by-frame walk cycle with custom rigging system. Features 5 key poses and fully articulated character rig for smooth animation.</p>
+        
+        <!-- Виды сбоку -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; padding: 15px; background: #f8fafc; border-radius: 15px;">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('hero sides.jpg')">
+                <img src="hero sides.jpg" alt="Side views of character" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.75rem; color: #64748B; margin-top: 5px;">Side Views</p>
+            </div>
+            
+            <!-- FLA анимация -->
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('hero-walk.gif')">
+    <img src="hero-walk.gif" alt="Walk cycle animation" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+    <p style="font-size: 0.75rem; color: #64748B; margin-top: 5px;">Walk Cycle Preview</p>
+</div> 
+    </div>
+    </div> 
+</div>
+    
+        
+   
+
+            <!-- Microbial Mayhem UI -->
+<div class="portfolio-item">
+    <!-- Главная картинка -->
+    <div class="portfolio-image ui" style="display: flex; align-items: center; justify-content: center; background: #fdf2f8; cursor: zoom-in;" onclick="openImage('pic1.jpg')">
+        <img src="pic5.jpg" alt="Microbial Mayhem main menu" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    
+    <div class="portfolio-info">
+        <span class="portfolio-category">UI/UX Design</span>
+        <h3>Microbial Mayhem — Game Interface</h3>
+        <p>Complete UI package for educational game featuring creative skeleton-hand navigation, organ-based level selection, and cohesive visual identity.</p>
+        
+        <!-- 4 скриншота интерфейса -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 15px;">
+            <div style="cursor: pointer;" onclick="openImage('pic1.jpg')">
+                <img src="pic1.jpg" alt="Main menu" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Main Menu</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('pic2.jpg')">
+                <img src="pic2.jpg" alt="Level selection" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Level Select</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('pic3.jpg')">
+                <img src="pic3.jpg" alt="Gameplay UI" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Gameplay HUD</p>
+            </div>
+            <div style="cursor: pointer;" onclick="openImage('pic4.jpg')">
+                <img src="pic4.jpg" alt="Settings screen" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="text-align: center; font-size: 0.7rem; color: #64748B; margin-top: 5px;">Settings</p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+            <!-- Creature Evolution -->
+<div class="portfolio-item">
+    <!-- Главная картинка -->
+    <div class="portfolio-image microbe" style="display: flex; align-items: center; justify-content: center; background: #ecfdf5; cursor: zoom-in;" onclick="openImage('microb1.jpg')">
+        <img src="microb1.jpg" alt="Microbe evolution stage 1" style="max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none;">
+    </div>
+    
+    <div class="portfolio-info">
+        <span class="portfolio-category">Creature Design</span>
+        <h3>Microbe Evolution Series</h3>
+        <p>Three-stage evolution of a green microbe character, from simple cell to crowned complex organism with jewelry details.</p>
+        
+        <!-- 3 стадии эволюции -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 15px;">
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb1.jpg')">
+                <img src="microb2.jpg" alt="Stage 1: Simple cell" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 1</p>
+            </div>
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb2.jpg')">
+                <img src="microb3.jpg" alt="Stage 2: Evolved form" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 2</p>
+            </div>
+            <div style="cursor: pointer; text-align: center;" onclick="openImage('microb3.jpg')">
+                <img src="microb4.jpg" alt="Stage 3: Final form" style="width: 100%; border-radius: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <p style="font-size: 0.7rem; color: #64748B; margin-top: 5px;">Stage 3</p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+    </section>
+
+    <!-- Contact Section -->
+<section class="contact" id="contact">
+    <span class="section-tag" style="color: var(--turquoise);">Let's Connect</span>
+    <h2>Ready to create something amazing?</h2>
+    <p class="contact-text">
+        I'm currently seeking internship opportunities in character design and 2D animation. 
+        Would love to bring my quirky creatures to your next project!
+    </p>
+    
+   
+    <!-- Email под кнопками -->
+    <div style="margin-top: 2rem; position: relative; z-index: 1;">
+        <p style="color: var(--turquoise); font-size: 1.1rem; font-weight: 600;">
+            yleaan2005@gmail.com
+        </p>
+        <p style="color: #64748B; font-size: 0.9rem; margin-top: 0.5rem;">
+            Feel free to drop me a line anytime!
+        </p>
+    </div>
+
+    </section>
+
+    <footer>
+        <p>© 2024 Yulia Antonova. Designed & Built with 💚</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Filter buttons interaction
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Parallax effect for blobs
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+    <!-- Увеличение картинок при клике -->
+<div id="lightbox" onclick="closeImage()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; cursor: zoom-out;">
+    <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; border-radius: 10px;">
+</div>
+
+<script>
+function openImage(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImage() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function openFla() {
+    // Показываем сообщение, так как FLA нельзя открыть в браузере
+    const message = document.createElement('div');
+    message.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: rgba(0,0,0,0.9); z-index: 10000; display: flex; 
+                    align-items: center; justify-content: center; cursor: pointer;"
+             onclick="this.remove()">
+            <div style="background: white; padding: 40px; border-radius: 20px; 
+                        max-width: 500px; text-align: center;" onclick="event.stopPropagation()">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🎬</div>
+                <h3 style="font-family: Fredoka, sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: #1e293b;">
+                    Adobe Animate Project
+                </h3>
+                <p style="color: #64748B; line-height: 1.6; margin-bottom: 20px;">
+                    Source file <strong>hero.fla</strong> contains full walk cycle animation 
+                    with custom rigging. Available upon request for review.
+                </p>
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <p style="color: #166534; font-size: 0.9rem; margin: 0;">
+                        📧 Email me to request source files
+                    </p>
+                </div>
+                <button onclick="this.closest('div').parentElement.remove()" 
+                        style="background: #84cc16; color: white; border: none; 
+                               padding: 12px 30px; border-radius: 50px; font-weight: 700; 
+                               cursor: pointer; font-family: Nunito, sans-serif;">
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(message);
+    document.body.style.overflow = 'hidden';
+    
+    // Восстанавливаем скролл при закрытии
+    message.addEventListener('click', function() {
+        document.body.style.overflow = 'auto';
+    });
+}
+</script>
+</body>
+</html>
